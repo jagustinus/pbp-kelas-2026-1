@@ -10,20 +10,26 @@ kelas, beserta kunci yang ditambahkan setelah pertemuan selesai.
 
 | Folder | Pertemuan | Isi |
 |---|---|---|
-| `p02-dart/` | P02 | Dart dasar: tipe, null safety, fungsi, koleksi |
-| `p03-dart-lanjut/` | P03 | Kelas, asinkron, dan GitHub |
+| `p02-studio/` | P02 | Dart dasar: tipe, null safety, fungsi, koleksi |
+| `p03-studio/` | P03 | Kelas, asinkron, dan GitHub |
+| `ts1/`, `ts2/`, ... | - | Tugas terstruktur, satu folder per tugas |
 | `docs/` | - | Catatan pendek yang dirujuk dari kelas |
 
-Folder pertemuan berikutnya ditambahkan saat pertemuannya tiba, bukan dibuat kosong lebih dulu.
+Satu folder per pertemuan, berpola `p<nomor>-studio`. Folder pertemuan berikutnya ditambahkan
+saat pertemuannya tiba, bukan dibuat kosong lebih dulu.
 
 ## Aturan penamaan repositori mata kuliah ini
 
-| Untuk | Pola nama | Contoh |
-|---|---|---|
-| Studio, milik dosen | `pbp-studio-<tahun>-<semester>` | `pbp-studio-2026-1` |
-| Studio, milik mahasiswa, **satu untuk satu semester** | `pbp-studio-<nim>` | `pbp-studio-2024001` |
-| Proyek, milik kelompok | `pbp-proyek-<kode kelompok>` | `pbp-proyek-k1` |
-| Proyek, milik mahasiswa yang mengerjakan sendiri | `pbp-proyek-<nim>` | `pbp-proyek-2024001` |
+Seluruh semester ini Anda hanya membuat **dua sampai tiga repositori**, bukan satu per tugas.
+
+| Repositori | Pola nama | Isinya | Dibuat |
+|---|---|---|---|
+| **Studio** | `pbp-studio-<nim>` | Seluruh studio P02 sampai P15, ditambah tugas terstruktur TS-1 dan seterusnya | P02 |
+| **Proyek** | `pbp-proyek-<kode kelompok>` | Aplikasi Flutter kelompok beserta kasus berjalannya, dipakai sampai UAS | P06 |
+| **Backend**, bila tim memisahkannya | `pbp-backend-<kode kelompok>` | Backend buatan sendiri. Boleh digabung ke repositori proyek sebagai folder `backend/` | P06 |
+
+Mahasiswa yang mengerjakan proyek sendiri memakai `pbp-proyek-<nim>`. Milik dosen memakai
+tahun dan semester, yaitu `pbp-studio-2026-1`.
 
 Huruf kecil semua, dipisah tanda hubung, tanpa spasi, tanpa huruf kapital, tanpa nama panggilan.
 Alasannya: nama repositori muncul di URL, dan URL berhuruf campur menyusahkan saat disalin.
@@ -35,10 +41,10 @@ Pesan commit menyebut **apa yang berubah**, bukan "update" atau "fix". Contoh ya
 
 ## Menjalankan
 
-Seluruh berkas `.dart` di folder `p02-dart/` bisa dijalankan tanpa Flutter:
+Seluruh berkas `.dart` di folder `p02-studio/` bisa dijalankan tanpa Flutter:
 
 ```bash
-dart run p02-dart/latihan1.dart
+dart run p02-studio/latihan1.dart
 ```
 
 Atau ditempel ke `dartpad.dev` kalau Dart belum terpasang.
