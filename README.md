@@ -1,50 +1,49 @@
-# Studio PBP 2026.1
+# Kelas PBP 2026.1
 
-Repositori studio mata kuliah **IF24502 Pemrograman Berbasis Platform**, Program Studi Ilmu
+Kode kelas dan kunci studio mata kuliah **IF24502 Pemrograman Berbasis Platform**, Program Studi Ilmu
 Informatika, Universitas Katolik Darma Cendika. Semester Ganjil 2026/2027.
 
-Satu repositori untuk seluruh studio satu semester. Berisi kode yang dikerjakan bersama di
-kelas, beserta kunci yang ditambahkan setelah pertemuan selesai.
+Kunci satu pertemuan ditambahkan **sesudah deadline studio pertemuan itu lewat**.
 
-## Susunan folder
+## Isi
 
 | Folder | Pertemuan | Isi |
 |---|---|---|
 | `p02-studio/` | P02 | Dart dasar: tipe, null safety, fungsi, koleksi |
-| `p03-studio/` | P03 | Kelas, asinkron, dan GitHub |
-| `ts1/`, `ts2/`, ... | - | Tugas terstruktur, satu folder per tugas |
-| `docs/` | - | Catatan pendek yang dirujuk dari kelas |
+| `guyub/` | P06 dan seterusnya | Guyub, proyek studio: aplikasi Flutter di folder ini, backend di `guyub/backend/` mulai P07 |
 
-Satu folder per pertemuan, berpola `p<nomor>-studio`. Folder pertemuan berikutnya ditambahkan
-saat pertemuannya tiba, bukan dibuat kosong lebih dulu.
+`guyub/` di sini disusun persis seperti `guyub/` di repositori studio Anda. Bagian A diketik bersama di
+kelas; jawaban Bagian B ditambahkan hari **Senin** sesudah batas terlambat, dengan satu tag per pertemuan
+(`p06`, `p07`, ...). Tertinggal? Ambil tag pertemuan terakhir untuk ikut pertemuan berikutnya.
 
-## Aturan penamaan repositori mata kuliah ini
+## Repositori Anda
 
-Seluruh semester ini Anda hanya membuat **dua sampai tiga repositori**, bukan satu per tugas.
+Seluruh semester Anda hanya membuat **dua sampai tiga repositori**.
 
-| Repositori | Pola nama | Isinya | Dibuat |
-|---|---|---|---|
-| **Studio** | `pbp-studio-<nim>` | Seluruh studio P02 sampai P15, ditambah tugas terstruktur TS-1 dan seterusnya | P02 |
-| **Proyek** | `pbp-proyek-<kode kelompok>` | Aplikasi Flutter kelompok beserta kasus berjalannya, dipakai sampai UAS | P06 |
-| **Backend**, bila tim memisahkannya | `pbp-backend-<kode kelompok>` | Backend buatan sendiri. Boleh digabung ke repositori proyek sebagai folder `backend/` | P06 |
+| Repositori | Pola nama | Isi |
+|---|---|---|
+| Studio | `pbp-studio-<nim>` | Studio per pertemuan di folder `p<nomor>-studio/`, tugas terstruktur di `ts1/`, `ts2/`, ..., dan Guyub di folder `guyub/` |
+| Proyek | `pbp-proyek-<nama kelompok>` | Aplikasi kelompok, dipakai sampai UAS. Sendirian: `pbp-proyek-<nim>` |
+| Backend, bila dipisah | `pbp-backend-<nama kelompok>` | Backend buatan sendiri. Boleh digabung ke repositori proyek sebagai folder `backend/` |
 
-Mahasiswa yang mengerjakan proyek sendiri memakai `pbp-proyek-<nim>`. Milik dosen memakai
-tahun dan semester, yaitu `pbp-studio-2026-1`.
+Huruf kecil semua, dipisah tanda hubung, tanpa spasi.
 
-Huruf kecil semua, dipisah tanda hubung, tanpa spasi, tanpa huruf kapital, tanpa nama panggilan.
-Alasannya: nama repositori muncul di URL, dan URL berhuruf campur menyusahkan saat disalin.
+## Pesan commit
 
-## Aturan commit
+| Di mana | Bentuk | Contoh |
+|---|---|---|
+| Studio | `studio(p<nomor>): <langkah> <apa yang berubah>` | `studio(p06): A1 class dan data` |
+| Proyek | `<jenis>: <apa yang berubah> (#<nomor kartu>)` | `feat: form laporan baru (#12)` |
 
-Pesan commit menyebut **apa yang berubah**, bukan "update" atau "fix". Contoh yang diterima:
-`Menambah latihan 3 rata-rata dengan penjagaan daftar kosong`.
+Pesan menyebut **apa yang berubah**, bukan "update", "fix", atau "tugas". Aturan lengkap ada di
+**Aturan Main Scrum PBP** (PDF di EdLink).
 
 ## Menjalankan
 
-Seluruh berkas `.dart` di folder `p02-studio/` bisa dijalankan tanpa Flutter:
+Berkas `.dart` di `p02-studio/` bisa dijalankan tanpa Flutter:
 
 ```bash
 dart run p02-studio/latihan1.dart
 ```
 
-Atau ditempel ke `dartpad.dev` kalau Dart belum terpasang.
+Atau ditempel ke `dartpad.dev` bila Dart belum terpasang.
