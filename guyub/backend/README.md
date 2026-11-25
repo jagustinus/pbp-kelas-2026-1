@@ -1,6 +1,6 @@
 # Backend Guyub
 
-Studio Pertemuan 7: dua endpoint, `GET /item` dan `POST /item`. Data disimpan di list, jadi kembali ke dua item awal setiap server dimatikan.
+Backend yang sama dengan server kelas `https://guyub.joelmedia.my.id`. Dimulai di Pertemuan 7 (`GET /item`, `POST /item`), ditambah `GET /item/{id}` dan CORS, lalu `PATCH /item/{kode}` di Pertemuan 10. Data disimpan di list, jadi kembali ke lima kartu awal setiap server dimatikan.
 
 ## Menjalankan
 
@@ -23,4 +23,6 @@ pytest -q
 | No | Endpoint | Hasil |
 |---|---|---|
 | 1 | `GET /item` | Daftar item, kode 200 |
+| 2 | `GET /item/{id}` | Satu item, kode 200; 404 bila tidak ada |
 | 3 | `POST /item` | Item baru dengan `id`, `kode`, `dibuat_pada`, kode 201; 422 bila `judul` kosong atau `poin` bukan angka |
+| 4 | `PATCH /item/{kode}` | Mengubah `status` atau `penanggung_jawab`, kode 200; 404 bila kode tidak ada; 422 bila status di luar To Do, In Progress, Review, Done |

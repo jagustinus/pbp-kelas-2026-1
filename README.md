@@ -14,7 +14,8 @@ Kunci satu pertemuan ditambahkan **sesudah deadline studio pertemuan itu lewat**
 
 `guyub/` di sini disusun persis seperti `guyub/` di repositori studio Anda. Bagian A diketik bersama di
 kelas; jawaban Bagian B ditambahkan hari **Senin** sesudah batas terlambat, dengan satu tag per pertemuan
-(`p06`, `p07`, ...). Tertinggal? Ambil tag pertemuan terakhir untuk ikut pertemuan berikutnya.
+mulai `p09`. Tertinggal? Ambil tag pertemuan terakhir untuk ikut pertemuan berikutnya, karena studio selalu
+melanjutkan kode pertemuan sebelumnya.
 
 ## Repositori Anda
 
