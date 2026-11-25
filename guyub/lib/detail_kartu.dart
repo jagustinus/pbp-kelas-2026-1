@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'main.dart';
+import 'papan_model.dart';
 
 const urutanStatus = ['To Do', 'In Progress', 'Review', 'Done'];
 
@@ -11,7 +13,7 @@ class DetailKartu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // A4: baris context.watch ditulis di sini.
+    context.watch<PapanModel>();
     final posisi = urutanStatus.indexOf(item.status);
     final berikutnya = posisi >= 0 && posisi < urutanStatus.length - 1
         ? urutanStatus[posisi + 1]
@@ -31,10 +33,19 @@ class DetailKartu extends StatelessWidget {
             Text('Status: ${item.status}'),
             if (berikutnya != null)
               FilledButton(
-                onPressed: null, // A4: ganti null.
+                onPressed: () => context.read<PapanModel>().ubahStatus(
+                  item.kode,
+                  berikutnya,
+                ),
                 child: Text('Pindah ke $berikutnya'),
               ),
-            // B1: tombol Selesai ditulis di sini.
+            OutlinedButton(
+              onPressed: () {
+                context.read<PapanModel>().ubahStatus(item.kode, 'Done');
+                Navigator.pop(context, true);
+              },
+              child: const Text('Selesai'),
+            ),
           ],
         ),
       ),

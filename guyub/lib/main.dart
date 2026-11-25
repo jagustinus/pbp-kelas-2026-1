@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'api.dart';
+import 'detail_kartu.dart';
+import 'isi_papan.dart';
+import 'papan_model.dart';
 
-// A1: bungkus MaterialApp di sini.
 void main() {
-  runApp(const MaterialApp(home: LayarPapan()));
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => PapanModel()..muat(),
+      child: const MaterialApp(home: LayarPapan()),
+    ),
+  );
 }
 
 // Class ItemBacklog
@@ -37,7 +45,6 @@ class ItemBacklog {
   }
 }
 
-// A2: FutureBuilder diganti dengan data dari PapanModel.
 class LayarPapan extends StatefulWidget {
   const LayarPapan({super.key});
 
@@ -46,8 +53,6 @@ class LayarPapan extends StatefulWidget {
 }
 
 class _LayarPapanState extends State<LayarPapan> {
-  late Future<List<ItemBacklog>> muatan = ambilSemuaItem();
-
   // Form kartu baru, lalu pesan menurut kode status.
   Future<void> bukaFormTambah() async {
     final judul = TextEditingController();
@@ -89,7 +94,8 @@ class _LayarPapanState extends State<LayarPapan> {
       final kode = await tambahItem(judul.text, int.tryParse(poin.text) ?? 0);
       if (kode == 201) {
         pesan = 'Kartu ditambahkan';
-        setState(() => muatan = ambilSemuaItem());
+        if (!mounted) return;
+        await context.read<PapanModel>().muat();
       } else if (kode == 422) {
         pesan = 'Judul wajib diisi dan poin paling kecil 1';
       } else {
@@ -106,18 +112,7 @@ class _LayarPapanState extends State<LayarPapan> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Guyub')),
-      body: FutureBuilder<List<ItemBacklog>>(
-        future: muatan,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState != ConnectionState.done) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          if (snapshot.hasError) {
-            return Center(child: Text('Gagal memuat: ${snapshot.error}'));
-          }
-          return DaftarKartu(items: snapshot.data!);
-        },
-      ),
+      body: IsiPapan(papan: context.watch<PapanModel>()),
       floatingActionButton: FloatingActionButton(
         onPressed: bukaFormTambah,
         tooltip: 'Tambah kartu',
@@ -144,7 +139,18 @@ class DaftarKartu extends StatelessWidget {
             '${item.kode} · ${item.penanggungJawab ?? 'belum ada penanggung jawab'}',
           ),
           trailing: Text(item.status),
-          // A3: onTap ditulis di sini.
+          onTap: () async {
+            final selesai = await Navigator.push<bool>(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DetailKartu(item: item),
+              ),
+            );
+            if (selesai != true || !context.mounted) return;
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('${item.judul} selesai')),
+            );
+          },
         );
       },
     );
